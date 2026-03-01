@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="js" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="">
+    <meta name="description" content="Pakistan's No. 1 Crockery Store, Providing a Vast Range of Variety.">
+    
+    <title>Onyourshelf - Premium Crockery Store in Pakistan</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="//onyourshelf.pk/cdn/shop/files/onyourshelf.jpg?crop=center&amp;height=32&amp;v=1723283626&amp;width=32">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://onyourshelf.pk/">
+    
+    <!-- Fonts and Base Styles -->
+    <link rel="stylesheet" href="homepage.css">
+    
+    <!-- Navbar and Announcement Bar Styles -->
+    <style>
+        /* Announcement Bar Styles */
+        .announcement-bar {
+            background: #ffe6e6;
+            color: #333;
+            padding: 12px 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .announcement-text {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #333;
+        }
+        
+        .announcement-close {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 18px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            padding: 5px;
+        }
+        
+        .announcement-close:hover {
+            opacity: 1;
+            color: #333;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+        
+        /* Navbar Styles - Sticky Version */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            margin: 0;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        
+        /* Jab navbar sticky ho to ye effect add karo */
+        .navbar.sticky {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 20px 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #FFD000;
+        }
+        
+        .nav-link.active {
+            color: #FFD000;
+        }
+        
+        .nav-link.sale {
+            color: red;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            list-style: none;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            padding: 10px 20px;
+        }
+        
+        .dropdown-item a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+        
+        .dropdown-item a:hover {
+            color: #FFD000;
+            padding-left: 5px;
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Header Action Buttons */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #333;
+            position: relative;
+        }
+        
+        .action-btn:hover {
+            background-color: #f5f5f5;
+            transform: scale(1.1);
+        }
+        
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .action-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 1.5;
+        }
+        
+        .action-btn.account-btn svg {
+            stroke-width: 1.8;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            min-width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px;
+        }
+        
+        /* Background Content Section */
+        .background-content {
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text readability */
+            z-index: 1;
+        }
+        
+        .background-text {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            line-height: 1.4;
+        }
+        
+        .background-subtext {
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+        
+        /* Content padding for sticky navbar */
+        .main-content {
+            padding-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                transition: left 0.3s;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding-left: 20px;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .nav-link {
+                padding: 15px 0;
+            }
+            
+            .announcement-text {
+                font-size: 13px;
+            }
+            
+            .action-btn {
+                padding: 8px;
+            }
+            
+            .background-text {
+                font-size: 24px;
+                padding: 15px;
+            }
+            
+            .background-subtext {
+                font-size: 16px;
+            }
+            
+            .navbar {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body id="m-theme" class="template-index m-gradient m-color-default" style="margin: 0; padding: 0;">
+    <!-- Page Transition -->
+    <div class="m-page-transition" style="display: none;"></div>
+    
+    <!-- Header Section with Announcement Bar and Navbar -->
+    <header class="m-header m:block" data-section-type="header">
+        <!-- Announcement Bar with color #ffe6e6 - No icon -->
+        <div class="announcement-bar" id="announcementBar">
+            <div class="container-fluid">
+                <div class="announcement-content">
+                    <span class="announcement-text">
+                        Look No Further - Your Find For a Dreamy Tableware Ends Here.
+                    </span>
+                </div>
+            </div>
+            <button class="announcement-close" onclick="closeAnnouncement()" aria-label="Close announcement">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Navbar - Sticky -->
+        <div class="navbar" id="navbar">
+            <!-- Logo -->
+            <div class="m-header__logo">
+                <a href="/" class="m-logo" title="onyourshelf">
+                    <img src="logo.webp" width="70" height="70" class="m-logo__image">
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link active">Home</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a href="/collections" class="nav-link">All Products</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="/collections/mugs">Mugs</a></li>
+                        <li class="dropdown-item"><a href="/collections/tea-set">Tea Sets</a></li>
+                        <li class="dropdown-item"><a href="/collections/plate-sets">Plate Sets</a></li>
+                        <li class="dropdown-item"><a href="/collections/bowls">Bowls Set</a></li>
+                        <li class="dropdown-item"><a href="/collections/dinner-sets">Dinner Sets</a></li>
+                        <li class="dropdown-item"><a href="/collections/cutlery">Cutlery</a></li>
+                        <li class="dropdown-item"><a href="/collections/drinkware">Drinkware</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/collections/new-arrivals" class="nav-link">New Arrivals</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/collections/sale" class="nav-link sale">Sale</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/collections/trending-products" class="nav-link">Trending</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/pages/customer-love" class="nav-link">Customer Love</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/pages/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            
+            <!-- Header Actions - All as buttons -->
+            <div class="header-actions">
+                <!-- Search Button -->
+                <button class="action-btn search-btn" id="searchBtn" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Account Button -->
+                <button class="action-btn account-btn" id="accountBtn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Cart Button with Count -->
+                <button class="action-btn cart-btn" id="cartBtn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main role="main" id="MainContent" class="main-content">
+        <!-- Hero Slider Section -->
+        <section class="m-section m-slideshow-section">
+            <div class="container-full">
+                <div class="swiper-container hero-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="m-slide">
+                                <picture>
+                                    <source media="(max-width: 767px)" srcset="//onyourshelf.pk/cdn/shop/files/OYS_Banner_500_x_600_px_0602406f-26f1-4aab-8520-ac7a7aaa0abf.jpg?v=1728571117">
+                                    <img src="background image.webp" alt="onyourshelf banner" loading="lazy" style="width: 100%; height: 100vh;">
+                                </picture>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Most Loved Items Collection -->
+        <section class="m-section m-collection-list m-gradient m-color-default">
+            <div class="container-fluid">
+                <div class="m-section__header m:text-left">
+                    <!-- Rest of your content here -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- JavaScript for Mobile Menu, Announcement Bar, Sticky Navbar, and Action Buttons -->
+    <script>
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            const navbar = document.getElementById('navbar');
+            
+            // Sticky Navbar Effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('sticky');
+                } else {
+                    navbar.classList.remove('sticky');
+                }
+            });
+            
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // Animate hamburger icon
+                const spans = menuToggle.querySelectorAll('span');
+                if (navMenu.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Handle dropdowns on mobile
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    const spans = menuToggle.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                    
+                    // Reset dropdowns
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Announcement Bar Close Function
+        function closeAnnouncement() {
+            const announcementBar = document.getElementById('announcementBar');
+            announcementBar.style.animation = 'slideOut 0.5s ease forwards';
+            
+            // Remove from DOM after animation
+            setTimeout(() => {
+                announcementBar.remove();
+            }, 500);
+            
+            // Store in localStorage so it doesn't show again
+            localStorage.setItem('announcementClosed', 'true');
+        }
+        
+        // Check if announcement was previously closed
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('announcementClosed') === 'true') {
+                document.getElementById('announcementBar').style.display = 'none';
+            }
+        });
+        
+        // Action Buttons Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBtn = document.getElementById('searchBtn');
+            const accountBtn = document.getElementById('accountBtn');
+            const cartBtn = document.getElementById('cartBtn');
+            
+            // Search button click handler
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    alert('Search functionality will open here');
+                    // You can replace this with actual search modal/flyout
+                });
+            }
+            
+            // Account button click handler
+            if (accountBtn) {
+                accountBtn.addEventListener('click', function() {
+                    window.location.href = '/account';
+                });
+            }
+            
+            // Cart button click handler
+            if (cartBtn) {
+                cartBtn.addEventListener('click', function() {
+                    alert('Cart drawer will open here');
+                    // You can replace this with actual cart drawer
+                });
+            }
+            
+            // Example of updating cart count (you can remove this in production)
+            function updateCartCount(count) {
+                const cartCount = document.getElementById('cartCount');
+                if (cartCount) {
+                    cartCount.textContent = count;
+                    cartCount.style.display = count > 0 ? 'flex' : 'none';
+                }
+            }
+            
+            // Example: Set initial cart count (remove in production)
+            updateCartCount(0);
+        });
+    </script>
+</body>
+</html>
